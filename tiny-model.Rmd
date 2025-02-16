@@ -67,6 +67,37 @@ summary.lm(species_lm)
 Based on the scatter plot of temperature, chirping and species, and a correlation test,
 it seems that as temperature increases by 1º Celsius, the chirping rate of the two species of cricket increses at an average of 3.6 chirps per minute.
 
+## Interactions
+
+```{r interactions, echo= FALSE}
+ggplot(crickets, aes(x = temp, y = rate, color = species)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle("Plot of temperature and chirp rate for two species of crickets") +
+  ylab('Chirp rate (per min.)') +
+  xlab('Temperature (Celsius)')
+  
+species_x_temp_lm <- lm(rate ~ temp + species + temp:species, crickets) 
+summary.lm(species_x_temp_lm)
+
+anova(species_lm, species_x_temp_lm)
+```
+
+Each species occupies a different temperature range.
+We checked for interactions but decided to stay with the species model.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
