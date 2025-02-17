@@ -87,10 +87,20 @@ Each species occupies a different temperature range.
 We checked for interactions but decided to stay with the species model.
 
 
+```{r load diamonds, include=FALSE}
+library(ggplot2)
+data(diamonds, package = "ggplot2")
 
+```
 
+## Diamonds Value Prediction
 
+```{r prediction, echo=FALSE}
 
+diamond_model <- lm(price ~ carat + cut + clarity, diamonds)
+summary(diamond_model)
+
+```
 
 
 
